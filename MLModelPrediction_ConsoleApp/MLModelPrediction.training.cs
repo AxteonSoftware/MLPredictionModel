@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
-using Microsoft.ML.Trainers.LightGbm;
+using Microsoft.ML.Trainers.FastTree;
 using Microsoft.ML.Transforms;
 
 namespace MLModelPrediction_ConsoleApp
 {
     public partial class MLModelPrediction
     {
-        public const string RetrainFilePath =  @"C:\Users\48503\source\repos\AIPredictionModel\MLModelPrediction\DataSource\taxi-fare-train.csv";
+        public const string RetrainFilePath =  @"C:\Users\AdrianKrześniak\source\repos\AxteonSoftware\AIPredictionModel\MLModelPrediction\DataSource\taxi-fare-train.csv";
         public const char RetrainSeparatorChar = ',';
         public const bool RetrainHasHeader =  true;
         public const bool RetrainAllowQuoting =  false;
@@ -94,7 +94,7 @@ namespace MLModelPrediction_ConsoleApp
             var pipeline = mlContext.Transforms.Categorical.OneHotEncoding(new []{new InputOutputColumnPair(@"vendor_id", @"vendor_id"),new InputOutputColumnPair(@"payment_type", @"payment_type")}, outputKind: OneHotEncodingEstimator.OutputKind.Indicator)      
                                     .Append(mlContext.Transforms.ReplaceMissingValues(new []{new InputOutputColumnPair(@"passenger_count", @"passenger_count"),new InputOutputColumnPair(@"trip_time_in_secons", @"trip_time_in_secons"),new InputOutputColumnPair(@"trip_distance", @"trip_distance")}))      
                                     .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"vendor_id",@"payment_type",@"passenger_count",@"trip_time_in_secons",@"trip_distance"}))      
-                                    .Append(mlContext.Regression.Trainers.LightGbm(new LightGbmRegressionTrainer.Options(){NumberOfLeaves=1985,NumberOfIterations=4,MinimumExampleCountPerLeaf=21,LearningRate=0.5547886739709154,LabelColumnName=@"fare_amount",FeatureColumnName=@"Features",Booster=new GradientBooster.Options(){SubsampleFraction=0.5706076420655991,FeatureFraction=0.99999999,L1Regularization=2E-10,L2Regularization=0.9999997766729865},MaximumBinCountPerFeature=304}));
+                                    .Append(mlContext.Regression.Trainers.FastForest(new FastForestRegressionTrainer.Options(){NumberOfTrees=4,NumberOfLeaves=4,FeatureFraction=1F,LabelColumnName=@"fare_amount",FeatureColumnName=@"Features"}));
 
             return pipeline;
         }
