@@ -8,7 +8,7 @@
     "KeepPunctuations": false,
     "AllowQuoting": false,
     "Type": "TabularFile",
-    "FilePath": "C:\\Users\\48503\\source\\repos\\AIPredictionModel\\MLModelPrediction\\DataSource\\taxi-fare-train.csv",
+    "FilePath": "C:\\Users\\AdrianKrześniak\\source\\repos\\MLPredictionModel\\MLModelPrediction\\DataSource\\taxi-fare-train.csv",
     "Delimiter": ",",
     "DecimalMarker": ".",
     "HasHeader": true,
@@ -74,64 +74,9 @@
       {
         "Version": 1,
         "Type": "Trial",
-        "TrainerName": "LightGbmRegression",
-        "Score": 0.90073588483923894,
-        "RuntimeInSeconds": 1.258,
-        "Parameter": {
-          "_SCHEMA_": "e0 * e1 * e2 * e5",
-          "e0": {
-            "OutputColumnNames": [
-              "vendor_id",
-              "payment_type"
-            ],
-            "InputColumnNames": [
-              "vendor_id",
-              "payment_type"
-            ]
-          },
-          "e1": {
-            "OutputColumnNames": [
-              "passenger_count",
-              "trip_time_in_secons",
-              "trip_distance"
-            ],
-            "InputColumnNames": [
-              "passenger_count",
-              "trip_time_in_secons",
-              "trip_distance"
-            ]
-          },
-          "e2": {
-            "InputColumnNames": [
-              "vendor_id",
-              "payment_type",
-              "passenger_count",
-              "trip_time_in_secons",
-              "trip_distance"
-            ],
-            "OutputColumnName": "Features"
-          },
-          "e5": {
-            "NumberOfLeaves": 1985,
-            "MinimumExampleCountPerLeaf": 21,
-            "LearningRate": 0.55478867397091536,
-            "NumberOfTrees": 4,
-            "SubsampleFraction": 0.57060764206559911,
-            "MaximumBinCountPerFeature": 304,
-            "FeatureFraction": 0.99999999,
-            "L1Regularization": 2E-10,
-            "L2Regularization": 0.99999977667298645,
-            "LabelColumnName": "fare_amount",
-            "FeatureColumnName": "Features"
-          }
-        }
-      },
-      {
-        "Version": 1,
-        "Type": "Trial",
         "TrainerName": "FastForestRegression",
-        "Score": 0.88149405509391987,
-        "RuntimeInSeconds": 0.415,
+        "Score": 0.885093253620136,
+        "RuntimeInSeconds": 0.208,
         "Parameter": {
           "_SCHEMA_": "e0 * e1 * e2 * e4",
           "e0": {
@@ -167,9 +112,58 @@
             "OutputColumnName": "Features"
           },
           "e4": {
-            "NumberOfTrees": 6,
-            "NumberOfLeaves": 8,
-            "FeatureFraction": 0.9929906,
+            "NumberOfTrees": 8,
+            "NumberOfLeaves": 6,
+            "FeatureFraction": 0.9769343,
+            "LabelColumnName": "fare_amount",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestRegression",
+        "Score": 0.88284991387775369,
+        "RuntimeInSeconds": 0.293,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e4",
+          "e0": {
+            "OutputColumnNames": [
+              "vendor_id",
+              "payment_type"
+            ],
+            "InputColumnNames": [
+              "vendor_id",
+              "payment_type"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "passenger_count",
+              "trip_time_in_secons",
+              "trip_distance"
+            ],
+            "InputColumnNames": [
+              "passenger_count",
+              "trip_time_in_secons",
+              "trip_distance"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "vendor_id",
+              "payment_type",
+              "passenger_count",
+              "trip_time_in_secons",
+              "trip_distance"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e4": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 0.965274,
             "LabelColumnName": "fare_amount",
             "FeatureColumnName": "Features"
           }
@@ -180,7 +174,7 @@
         "Type": "Trial",
         "TrainerName": "FastForestRegression",
         "Score": 0.87481878486532039,
-        "RuntimeInSeconds": 0.896,
+        "RuntimeInSeconds": 0.486,
         "Parameter": {
           "_SCHEMA_": "e0 * e1 * e2 * e4",
           "e0": {
@@ -227,9 +221,58 @@
       {
         "Version": 1,
         "Type": "Trial",
+        "TrainerName": "FastForestRegression",
+        "Score": 0.87481878486532039,
+        "RuntimeInSeconds": 0.185,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e4",
+          "e0": {
+            "OutputColumnNames": [
+              "vendor_id",
+              "payment_type"
+            ],
+            "InputColumnNames": [
+              "vendor_id",
+              "payment_type"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "passenger_count",
+              "trip_time_in_secons",
+              "trip_distance"
+            ],
+            "InputColumnNames": [
+              "passenger_count",
+              "trip_time_in_secons",
+              "trip_distance"
+            ]
+          },
+          "e2": {
+            "InputColumnNames": [
+              "vendor_id",
+              "payment_type",
+              "passenger_count",
+              "trip_time_in_secons",
+              "trip_distance"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e4": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 9,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "fare_amount",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
         "TrainerName": "LightGbmRegression",
-        "Score": 0.86694995587987611,
-        "RuntimeInSeconds": 1.249,
+        "Score": 0.86763449131061476,
+        "RuntimeInSeconds": 0.509,
         "Parameter": {
           "_SCHEMA_": "e0 * e1 * e2 * e5",
           "e0": {
@@ -278,55 +321,6 @@
             "FeatureColumnName": "Features"
           }
         }
-      },
-      {
-        "Version": 1,
-        "Type": "Trial",
-        "TrainerName": "FastForestRegression",
-        "Score": 0.84139152945782236,
-        "RuntimeInSeconds": 0.338,
-        "Parameter": {
-          "_SCHEMA_": "e0 * e1 * e2 * e4",
-          "e0": {
-            "OutputColumnNames": [
-              "vendor_id",
-              "payment_type"
-            ],
-            "InputColumnNames": [
-              "vendor_id",
-              "payment_type"
-            ]
-          },
-          "e1": {
-            "OutputColumnNames": [
-              "passenger_count",
-              "trip_time_in_secons",
-              "trip_distance"
-            ],
-            "InputColumnNames": [
-              "passenger_count",
-              "trip_time_in_secons",
-              "trip_distance"
-            ]
-          },
-          "e2": {
-            "InputColumnNames": [
-              "vendor_id",
-              "payment_type",
-              "passenger_count",
-              "trip_time_in_secons",
-              "trip_distance"
-            ],
-            "OutputColumnName": "Features"
-          },
-          "e4": {
-            "NumberOfTrees": 4,
-            "NumberOfLeaves": 12,
-            "FeatureFraction": 0.9102036,
-            "LabelColumnName": "fare_amount",
-            "FeatureColumnName": "Features"
-          }
-        }
       }
     ],
     "Estimators": {
@@ -341,7 +335,7 @@
     },
     "Schema": "e0 * e1 * e2 * (e3 + e4 + e5 + e6 + e7)",
     "MetricName": "RSquared",
-    "ModelFilePath": "C:\\Users\\48503\\source\\repos\\AIPredictionModel\\MLModelPrediction\\MLModelPrediction.mlnet"
+    "ModelFilePath": "C:\\Users\\AdrianKrześniak\\source\\repos\\MLPredictionModel\\MLModelPrediction\\MLModelPrediction.mlnet"
   },
   "Type": "TrainingConfig",
   "Version": 5,
