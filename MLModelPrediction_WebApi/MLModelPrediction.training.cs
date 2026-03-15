@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
-using Microsoft.ML.Trainers.FastTree;
+using Microsoft.ML.Trainers.LightGbm;
 using Microsoft.ML.Transforms;
     public partial class MLModelPrediction
     {
-        public const string RetrainFilePath =  @"C:\Users\AdrianKrześniak\source\repos\AxteonSoftware\AIPredictionModel\MLModelPrediction\DataSource\taxi-fare-train.csv";
+        public const string RetrainFilePath =  @"C:\Users\AdrianKrześniak\source\repos\MLPredictionModel\MLModelPrediction\DataSource\taxi-fare-train.csv";
         public const char RetrainSeparatorChar = ',';
         public const bool RetrainHasHeader =  true;
         public const bool RetrainAllowQuoting =  false;
@@ -91,7 +91,7 @@ using Microsoft.ML.Transforms;
             var pipeline = mlContext.Transforms.Categorical.OneHotEncoding(new []{new InputOutputColumnPair(@"vendor_id", @"vendor_id"),new InputOutputColumnPair(@"payment_type", @"payment_type")}, outputKind: OneHotEncodingEstimator.OutputKind.Indicator)      
                                     .Append(mlContext.Transforms.ReplaceMissingValues(new []{new InputOutputColumnPair(@"passenger_count", @"passenger_count"),new InputOutputColumnPair(@"trip_time_in_secons", @"trip_time_in_secons"),new InputOutputColumnPair(@"trip_distance", @"trip_distance")}))      
                                     .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"vendor_id",@"payment_type",@"passenger_count",@"trip_time_in_secons",@"trip_distance"}))      
-                                    .Append(mlContext.Regression.Trainers.FastForest(new FastForestRegressionTrainer.Options(){NumberOfTrees=4,NumberOfLeaves=4,FeatureFraction=1F,LabelColumnName=@"fare_amount",FeatureColumnName=@"Features"}));
+                                    .Append(mlContext.Regression.Trainers.LightGbm(new LightGbmRegressionTrainer.Options(){NumberOfLeaves=4,NumberOfIterations=2570,MinimumExampleCountPerLeaf=20,LearningRate=0.41060136670155944,LabelColumnName=@"fare_amount",FeatureColumnName=@"Features",Booster=new GradientBooster.Options(){SubsampleFraction=0.9999997766729865,FeatureFraction=0.9873922387534239,L1Regularization=2.075939654771455E-10,L2Regularization=0.9947724731892893},MaximumBinCountPerFeature=130}));
 
             return pipeline;
         }

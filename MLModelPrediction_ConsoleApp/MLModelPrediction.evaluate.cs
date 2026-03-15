@@ -85,12 +85,12 @@ namespace MLModelPrediction_ConsoleApp
             // Setup what the graph looks like
             var title = Title.init(Text: "R-Squared Plot");
             var layout = Layout.init<IConvertible>(Title: title, PlotBGColor: Plotly.NET.Color.fromString("#e5ecf6"));
-            var xAxis = LinearAxis.init<float, float, float, float, float, float, float, float>(
+            var xAxis = LinearAxis.init<IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible>(
                     Title: Title.init("True Values"),
                     ZeroLineColor: Plotly.NET.Color.fromString("#ffff"),
                     GridColor: Plotly.NET.Color.fromString("#ffff"),
                     ZeroLineWidth: 2);
-            var yAxis = LinearAxis.init<float, float, float, float, float, float, float, float>(
+            var yAxis = LinearAxis.init<IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible>(
                     Title: Title.init("Predicted Values"),
                     ZeroLineColor: Plotly.NET.Color.fromString("#ffff"),
                     GridColor: Plotly.NET.Color.fromString("#ffff"),
@@ -100,7 +100,7 @@ namespace MLModelPrediction_ConsoleApp
             var maximumValue = Math.Max(trueValues.Max(), predictedValues.Max());
             var perfectX = new[] { 0, maximumValue };
             var perfectY = new[] { 0, maximumValue };
-    
+
 
 
             // Create the scatterplot that shows the true values vs the predicted values

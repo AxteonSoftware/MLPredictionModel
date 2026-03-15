@@ -77,7 +77,7 @@ namespace MLModelPrediction_WebApi
             var testResults = model.Transform(trainData);
 
             // Get the actual values from the dataset
-            var trueValues = testResults.GetColumn<float>(labelColumnName).Take(numberOfRows);
+            var trueValues = testResults.GetColumn<float>(labelColumnName).Take(numberOfRows); ;
 
             // Get the predicted values from the test results
             var predictedValues = testResults.GetColumn<float>("Score").Take(numberOfRows);
@@ -85,12 +85,12 @@ namespace MLModelPrediction_WebApi
             // Setup what the graph looks like
             var title = Title.init(Text: "R-Squared Plot");
             var layout = Layout.init<IConvertible>(Title: title, PlotBGColor: Plotly.NET.Color.fromString("#e5ecf6"));
-            var xAxis = LinearAxis.init<IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible>(
+            var xAxis = LinearAxis.init<IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible>(
                     Title: Title.init("True Values"),
                     ZeroLineColor: Plotly.NET.Color.fromString("#ffff"),
                     GridColor: Plotly.NET.Color.fromString("#ffff"),
                     ZeroLineWidth: 2);
-            var yAxis = LinearAxis.init<IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible>(
+            var yAxis = LinearAxis.init<IConvertible, IConvertible, IConvertible, IConvertible, IConvertible, IConvertible>(
                     Title: Title.init("Predicted Values"),
                     ZeroLineColor: Plotly.NET.Color.fromString("#ffff"),
                     GridColor: Plotly.NET.Color.fromString("#ffff"),
@@ -100,6 +100,8 @@ namespace MLModelPrediction_WebApi
             var maximumValue = Math.Max(trueValues.Max(), predictedValues.Max());
             var perfectX = new[] { 0, maximumValue };
             var perfectY = new[] { 0, maximumValue };
+
+
 
             // Create the scatterplot that shows the true values vs the predicted values
             var trueAndPredictedValues = Chart2D.Chart.Scatter<float, float, string>(x: trueValues, y: predictedValues, mode: StyleParam.Mode.Markers)
